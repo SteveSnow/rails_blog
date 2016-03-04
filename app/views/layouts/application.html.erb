@@ -7,8 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="banner">
 <%= link_to("Logout", "/logout" , method: :delete) %>
-
+	
+</div>
 <%= yield %>
 
 </body>

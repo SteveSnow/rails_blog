@@ -42,6 +42,12 @@ class UsersController < ApplicationController
 		return session[:id]==params[:id]
 	end
 
+	def add_post
+		@user=get_user
+		binding.pry
+		redirect_to user_path session[:user_id]
+	end
+
 	private
 
 	def user_params

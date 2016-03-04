@@ -3,7 +3,11 @@
 		<br>
 		<%=  current_user.first_name %>
 		<br>
-<div id="newPostContainer"></div>
+		<div id="newPostContainer">
+			<%= form_tag("/newpost", method: "post") do %>
+			<textarea name=""></textarea>
+			<%= submit_tag("Add") %>
+		</div>
 	</div>
 	<div id="userPosts">
 		<% if session[:user_id] %>
@@ -20,6 +24,7 @@
 		<% end %>
 		<% end %>
 	</div>
+	<% end %>
 </div>
 <% if session[:user_id] %>
 <% @users.each do |u|%>
