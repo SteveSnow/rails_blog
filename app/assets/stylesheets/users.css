@@ -1,4 +1,45 @@
-/*
-  Place all the styles related to the matching controller here.
-  They will automatically be included in application.css.
-*/
+#userContainer{
+	display: flex;
+	justify-content: space-between;
+	border: 1px black solid;
+}
+
+#userInfo{
+	border: 1px black solid;
+	margin:1em;
+	width: 30%;
+}
+
+#userPosts{
+	border: 1px black solid;
+	margin:1em;
+	padding:1em;
+	width: 50%;
+	background-color: #607D8B;
+}
+
+#postContainer{
+	border: 1px #01579B solid;
+	text-align: right;
+	font-style: bold;
+	padding:0.5em;
+	 border-radius: 10px;
+	 background-color: #E1F5FE;
+	 color:#01579B;
+}
+
+#postMessage{
+	text-align: left;
+	border: 1px #01579B solid;
+	color:black;
+	font-style: normal;
+	border-width: 0 0 1px 0;
+	padding-left: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+#newPostContainer{
+	border: 1px black solid;
+	height: 20em;
+}
+
