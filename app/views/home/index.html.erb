@@ -10,20 +10,30 @@
       <% end %>
 
 <h1>Rails Blog</h1>
-
+<% if current_user %>
+  <h2>Hello <%= current_user.first_name %></h2>
+<% else %>
+  <h2>Hello Guest</h2>
+<% end %>
+<span class="flash-comment-deleted"><%= flash[:notice] if flash[:notice] %></span>
 <% @posts.reverse.each do |post| %>
   <div class="post-wrapper">
     <%= post.message %><br>
     <%= find_user_name(post.user_id) %>
-    <%= "posted this " + distance_of_time_in_words(post.created_at, Time.now) + " ago." %>
+    <%= "posted this " + distance_of_time_in_words(post.created_at, Time.now) + " ago." %><br>
     <% post.comments.reverse.each do |comment| %>
       <div class="comment-wrapper">
         <%= comment.message %><br>
         <%= find_user_name(comment.user_id) %>
         <%= "posted this " + distance_of_time_in_words(comment.created_at, Time.now) + " ago." %>
-        <%= link_to("Delete Comment", comment_path(comment.id), method: :delete) %>
+        <% if current_user %>
+          <% if current_user.id == comment.user_id %>
+            <%= link_to("Delete Comment", comment_path(comment.id), method: :delete) %>
+          <% end %>
+        <% end %>
       </div>
     <% end %>
   </div>
 <% end %>
+<%= flash[:alert] if flash[:alert] %>
 

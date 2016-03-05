@@ -17,21 +17,21 @@ class CommentsController < ApplicationController
   def update
   end
   def show
-    @post_comments = Post.comments.all
-      if @post_comments.present?
-      flash[:notice] = "Comments displayed"
-    else
-      flash[:alert] = "There are no comments to diplay"
-    end
+    # @post_comments = Post.comments.all
+    #   if @post_comments.present?
+    #   flash[:notice] = "Comments displayed"
+    # else
+    #   flash[:alert] = "There are no comments to diplay"
+    # end
   end
   def destroy
-    # @comment = Comment.find(params[:id])
-    # if @comment.destroy
-    #   flash[:notice] = "Comment deleted"
-    # else
-    #   flash[:alert] = "There was a problem deleting the comment."
-    # end
-    # redirect_to '/'
-    puts "PARAMS ARE" + params.inspect
+    comment = Comment.find(params[:id])
+    comment.destroy
+    if comment.destroy
+      flash[:notice] = "Comment deleted"
+    else
+      flash[:alert] = "There was a problem deleting the comment."
+    end
+    redirect_to '/'
   end
 end
