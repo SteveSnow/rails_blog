@@ -1,0 +1,9 @@
+.post-wrapper {
+  margin:10px auto;
+  border: black solid 1px;
+}
+
+.comment-wrapper {
+  margin: 5px auto;
+  border: blue solid 1px;
+}

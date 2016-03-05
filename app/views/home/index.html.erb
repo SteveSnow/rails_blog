@@ -8,3 +8,22 @@
 
       <%= f.submit "Log in", class: "btn btn-primary" %>
       <% end %>
+
+<h1>Rails Blog</h1>
+
+<% @posts.reverse.each do |post| %>
+  <div class="post-wrapper">
+    <%= post.message %><br>
+    <%= find_user_name(post.user_id) %>
+    <%= "posted this " + distance_of_time_in_words(post.created_at, Time.now) + " ago." %>
+    <% post.comments.reverse.each do |comment| %>
+      <div class="comment-wrapper">
+        <%= comment.message %><br>
+        <%= find_user_name(comment.user_id) %>
+        <%= "posted this " + distance_of_time_in_words(comment.created_at, Time.now) + " ago." %>
+        <%= link_to("Delete Comment", comment_path(comment.id), method: :delete) %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
