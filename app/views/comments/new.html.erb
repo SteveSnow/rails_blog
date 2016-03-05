@@ -1,0 +1,10 @@
+<%= form_for Comment.new do |f| %>
+  <%=f.label :user_id %>
+  <%=f.text_field :user_id %><br>
+  <%=f.label :post_id %>
+  <%=f.text_field :post_id %><br>
+  <%=f.label :message %>
+  <%=f.text_field :message %><br>
+  <%=f.submit :Comment %>
+<% end %>
+<a href="/">Return Home</a>

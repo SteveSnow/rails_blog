@@ -1,17 +1,9 @@
 class HomeController < ApplicationController
 
   def index
-    @posts = Post.all
+    post_user_id = Relationship.where(follower_id: session[:user_id]).pluck(:follows_id)
+    @posts = Post.where(user_id: post_user_id)
   end
-
-  def get_user
-    return User.find_by_id(params[:id])
-  end
-
-  def check_session
-    return session[:id]==params[:id]
-  end
-
 end
 
 

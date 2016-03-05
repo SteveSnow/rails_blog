@@ -1,37 +1,48 @@
 class CommentsController < ApplicationController
   def index
-    @posts = Post.all
-    @comments = Comment.all
-    if @comments.present?
-      flash[:notice] = "Comments displayed"
+  end
+
+  def new
+    @comment = Comment.new
+  end
+
+  def create
+    @comment = Comment.new(comment_params)
+    if @comment.message.length > 150
+      flash[:limit] = "Your comment must be less than 150 charactors."
+      redirect_to '/'
+    elsif @comment.message.length >= 1
+      @comment = Comment.create(comment_params)
+      redirect_to '/'
     else
-      flash[:alert] = "There are no comments to diplay"
+      flash[:limit] = "There was an error with your comment entry."
+      redirect_to '/'
     end
   end
-  def new
-  end
-  def create
-  end
+
   def edit
   end
+
   def update
   end
+
   def show
-    # @post_comments = Post.comments.all
-    #   if @post_comments.present?
-    #   flash[:notice] = "Comments displayed"
-    # else
-    #   flash[:alert] = "There are no comments to diplay"
-    # end
   end
+
   def destroy
     comment = Comment.find(params[:id])
     comment.destroy
     if comment.destroy
-      flash[:notice] = "Comment deleted"
     else
       flash[:alert] = "There was a problem deleting the comment."
     end
     redirect_to '/'
   end
+
+    private
+
+  def comment_params
+    params.require(:comment).permit(:user_id,:post_id,:message)
+  end
+
 end
