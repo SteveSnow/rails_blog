@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   end
 
   def new
-    @comment = Comment.new
+    render layout: false
   end
 
   def create

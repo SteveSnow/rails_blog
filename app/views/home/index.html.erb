@@ -1,29 +1,28 @@
 
 
 <h1>Rails Blog</h1>
-<% if current_user %>
-  <h2>Hello <%= current_user.first_name.capitalize %></h2>
-<% else %>
-  <h2>Hello Guest</h2>
-<% end %>
+
+<h2><%= greeting %></h2>
+
 <% if current_user %>
   <% @posts.reverse.each do |post| %>
     <div class="post-wrapper">
       <%= post.message %><br>
       <%= find_user_name(post.user_id) %>
       <%= "posted this " + distance_of_time_in_words(post.created_at, Time.now) + " ago." %><br>
-  <!--     <a href="comments/new" class="comment-link">Make Comment</a> -->
-      <div class="comment-wrapper" id="new-comment-box">
-        <% if current_user %>
-          <%= form_for Comment.new do |f| %>
-            <%=f.hidden_field :user_id, :value => current_user.id %><br>
-            <%=f.hidden_field :post_id, :value => post.id %><br>
-            <%=f.label :message %>
-            <%=f.text_field :message %><br>
-            <%=f.submit :Comment %>
-          <% end %>
-        <% end %>
-      </div>
+      <% if current_user %>
+        <div class="new-comment-box">
+          <div class="comment-wrapper">
+            <%= form_for Comment.new do |f| %>
+              <%=f.hidden_field :user_id, :value => current_user.id %><br>
+              <%=f.hidden_field :post_id, :value => post.id %><br>
+              <%=f.label :Comment %>
+              <%=f.text_field :message %><br>
+              <%=f.submit :Comment %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
       <% post.comments.reverse.each do |comment| %>
         <div class="comment-wrapper">
           <%= comment.message %><br>
