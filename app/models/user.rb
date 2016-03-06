@@ -1,6 +1,11 @@
 class User < ActiveRecord::Base
   has_many :posts
-accepts_nested_attributes_for :posts
+
+def full_name
+  if not self.first_name.nil? && self.last_name.nil?
+    return self.first_name.capitalize + ' ' + self.last_name.capitalize
+  end
+end
   def follow_user(i)
     if (Relationship.where(follower_id:self.id,follows_id:i).count==0)
       Relationship.create(follower_id:self.id,follows_id:i)
