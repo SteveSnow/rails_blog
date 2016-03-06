@@ -18,6 +18,7 @@
 			<div id="postMessage">
 				<%= post.message %>
 			</div>
+			<%= link_to 'Delete Post',:controller=> 'users', :action=> 'delete_post', :post=>post.id  %>
 			<br>
 			<span><%= distance_of_time_in_words(Time.now,post.created_at) %></span>
 		</div>
@@ -28,11 +29,20 @@
 </div>
 <% if session[:user_id] %>
 <% @users.each do |u|%>
+<% if  u.id != session[:user_id] %>
 <%= u.first_name %>
 <% if @user.user_follows.where(follows_id:u.id).count!=0 %>
-**
+<%= link_to 'Unfollow', :controller => "users", :action => "unfollow",:id=>u.id %>
 <% else %>
+
+<%= link_to 'Follow', :controller => "users", :action => "follow",:id=>u.id %>
+
 <% end %>
 <br>
+
+<% end %>
+
+
+
 <% end %>
 <% end %>

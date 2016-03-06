@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   post '/newpost' => 'users#add_post'
 
+  get '/follow' => 'users#follow'
+  get '/unfollow' => 'users#unfollow'
+  get '/delete_post'=> 'users#delete_post'
 
   post   '/login'   => 'sessions#create'
   delete '/logout'  => 'sessions#destroy'
