@@ -54,14 +54,14 @@ class UsersController < ApplicationController
 
   def follow
     user=get_user
-    user.follow_user(params[:id])
-    redirect_to user_path session[:user_id]
-  end
+    user.follow_user(params[:id]) 
+    redirect_to(:back)
+end
 
   def unfollow
     user=get_user
     user.unfollow_user(params[:id])
-    redirect_to user_path session[:user_id]
+    redirect_to(:back)
   end
 
   def delete_post
