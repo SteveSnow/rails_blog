@@ -2,7 +2,10 @@ class User < ActiveRecord::Base
   has_many :posts
 
 def full_name
-  if not self.first_name.nil? && self.last_name.nil?
+  if !self.first_name.nil? && self.last_name.nil?
+    return self.first_name.capitalize 
+  end
+  if !self.first_name.nil? && !self.last_name.nil?
     return self.first_name.capitalize + ' ' + self.last_name.capitalize
   end
 end

@@ -4,6 +4,10 @@
 	margin-bottom:1em;
 }
 
+#profileTable{
+	padding: 1em;
+}
+
 .profilelabel {
 	color:red;
 }

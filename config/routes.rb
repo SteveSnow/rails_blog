@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/unfollow' => 'users#unfollow'
   get '/delete_post'=> 'users#delete_post'
 
+  get '/users/:id/find' => 'users#find'
+
   post   '/login'   => 'sessions#create'
   delete '/logout'  => 'sessions#destroy'
 

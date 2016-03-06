@@ -1,12 +1,29 @@
 <div id="userContainer">
 	<div id="userInfo">
-		<br>
-		<%= label_tag :name,"Name:", :class =>'profilelabel' %>
-		<%=  current_user.full_name %>
-		<br>
-		<%= label_tag :email, 'Email', :class => 'profilelabel' %>
-		<%=  current_user.email %>
-		<br>
+		<table id="profileTable">
+			<tr>
+				<td><%= label_tag :email, 'Email', :class => 'profilelabel' %></td>
+				<td><%=  current_user.email %></td>
+			</tr>
+			<tr>
+				<td>
+				<%= label_tag :first_name, 'First Name', :class => 'profilelabel' %></td>
+				<td><% if ! current_user.first_name.nil? %>
+					<%=  current_user.first_name.capitalize %>
+					<% end %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<%= label_tag :last_name, 'Last Name', :class => 'profilelabel' %>
+				</td>
+				<td>
+						<% if ! current_user.last_name.nil? %>
+		<%=  current_user.last_name.capitalize %>
+		<% end %>
+				</td>
+			</tr>
+		</table>
 		<div id="newPostContainer">
 			<%= form_tag("/newpost", method: "post") do %>
 			<%=text_area_tag(:message) %>
@@ -31,15 +48,23 @@
 	</div>
 </div>
 <% if session[:user_id] %>
+<table>
+
 <% @users.each do |u|%>
 <% if  u.id != session[:user_id] %>
-<%= u.first_name %>
-<% if @user.user_follows.where(follows_id:u.id).count!=0 %>
-<%= link_to 'Unfollow', :controller => "users", :action => "unfollow",:id=>u.id %>
-<% else %>
-<%= link_to 'Follow', :controller => "users", :action => "follow",:id=>u.id %>
+<tr>
+	<td>	
+		<%= u.full_name %>
+	</td>
+	<td>		
+		<% if @user.user_follows.where(follows_id:u.id).count!=0 %>
+			<%= link_to 'Unfollow', :controller => "users", :action => "unfollow",:id=>u.id %>
+		<% else %>
+			<%= link_to 'Follow', :controller => "users", :action => "follow",:id=>u.id %>
+		<% end %>
+	</td>
+</tr>
 <% end %>
-<br>
 <% end %>
-<% end %>
+</table>
 <% end %>

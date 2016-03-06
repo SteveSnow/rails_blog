@@ -72,6 +72,11 @@ class UsersController < ApplicationController
     redirect_to user_path session[:user_id]
   end
 
+  def find
+  	@user=get_user
+  	@users=User.all
+  end
+
   private
 
   def user_params
