@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 	end
 
 	def new
-		
+
 	end
 
 	def edit
@@ -27,12 +27,12 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
-		
+
 	end
 
 	def update
 		user=User.update(user_edit_params)
-	end	
+	end
 
 	def get_user
 		return User.find_by_id(params[:id])
@@ -52,10 +52,10 @@ class UsersController < ApplicationController
 
 	def user_params
 		params.require(:user).permit(:first_name,:last_name,:email,:password)
-	end	
+	end
 	def user_edit_params
 		params.require(:user).permit(:first_name,:last_name,:email)
-	end	
+	end
 end
 
 

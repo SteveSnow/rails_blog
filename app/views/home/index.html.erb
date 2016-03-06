@@ -1,10 +1,46 @@
-<%= form_for(:session, url: login_path) do |f| %>
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+<h1>Rails Blog</h1>
+<% if current_user %>
+  <h2>Hello <%= current_user.first_name.capitalize %></h2>
+<% else %>
+  <h2>Hello Guest</h2>
+<% end %>
+<% if current_user %>
+  <% @posts.reverse.each do |post| %>
+    <div class="post-wrapper">
+      <%= post.message %><br>
+      <%= find_user_name(post.user_id) %>
+      <%= "posted this " + distance_of_time_in_words(post.created_at, Time.now) + " ago." %><br>
+  <!--     <a href="comments/new" class="comment-link">Make Comment</a> -->
+      <div class="comment-wrapper" id="new-comment-box">
+        <% if current_user %>
+          <%= form_for Comment.new do |f| %>
+            <%=f.hidden_field :user_id, :value => current_user.id %><br>
+            <%=f.hidden_field :post_id, :value => post.id %><br>
+            <%=f.label :message %>
+            <%=f.text_field :message %><br>
+            <%=f.submit :Comment %>
+          <% end %>
+        <% end %>
+      </div>
+      <% post.comments.reverse.each do |comment| %>
+        <div class="comment-wrapper">
+          <%= comment.message %><br>
+          <%= find_user_name(comment.user_id) %>
+          <%= "commented on this post " + distance_of_time_in_words(comment.created_at, Time.now) + " ago." %>
+          <% if current_user %>
+            <% if current_user.id == comment.user_id %>
+              <%= link_to("Delete Comment", comment_path(comment.id), method: :delete) %>
+            <% end %>
+          <% end %>
+        </div>
       <% end %>
+    </div>
+  <% end %>
+  <%= flash[:alert] if flash[:alert] %>
+  <%= flash[:limit] if flash[:limit] %>
+<% else %>
+  <h3>Log in or sign up to follow people and see their posts</h3>
+<% end %>
+

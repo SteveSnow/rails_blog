@@ -6,7 +6,10 @@
 		<div id="newPostContainer">
 			<%= form_tag("/newpost", method: "post") do %>
 			<textarea name=""></textarea>
+			
 			<%= submit_tag("Add") %>
+			 
+          <% end %>
 		</div>
 	</div>
 	<div id="userPosts">
@@ -24,7 +27,6 @@
 		<% end %>
 		<% end %>
 	</div>
-	<% end %>
 </div>
 <% if session[:user_id] %>
 <% @users.each do |u|%>
@@ -34,5 +36,6 @@
 <% else %>
 <% end %>
 <br>
-<%end %>
 <% end %>
+<% end %>
+
