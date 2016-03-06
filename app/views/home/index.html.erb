@@ -9,8 +9,8 @@
       <div class="post-outer-wrap">
         <div class="post-inner-wrap">
           <div id="postMessage">
-            <%= post.message %><br>
-          </div>
+            <%= post.message %>
+          </div><br>
           <%= find_user_name(post.user_id) %>
           <%= "posted this " + distance_of_time_in_words(post.created_at, Time.now) + " ago." %><br>
         </div>
