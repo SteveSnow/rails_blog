@@ -11,6 +11,7 @@
       <%= find_user_name(post.user_id) %>
       <%= "posted this " + distance_of_time_in_words(post.created_at, Time.now) + " ago." %><br>
       <% if current_user %>
+        <a href="#" class="comment-link">Make Comment</a>
         <div class="new-comment-box">
           <div class="comment-wrapper">
             <%= form_for Comment.new do |f| %>
@@ -20,6 +21,7 @@
               <%=f.text_field :message %><br>
               <%=f.submit :Comment %>
             <% end %>
+            <button class="cancel-comment-button">Cancel</button>
           </div>
         </div>
       <% end %>
