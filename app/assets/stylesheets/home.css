@@ -1,0 +1,15 @@
+.post-wrapper {
+  margin:10px auto;
+  border: black solid 1px;
+}
+
+.comment-wrapper {
+  margin: 5px auto;
+  border: blue solid 1px;
+}
+
+.flash-comment-deleted {
+  font-size: 2em;
+  color: red;
+  font-weight: bold;
+}
