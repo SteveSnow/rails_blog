@@ -1,11 +1,72 @@
-.post-wrapper {
-  margin:10px auto;
+header {
+  text-align: center;
+}
+
+.home-body-wrapper {
+  width: 90%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+}
+
+.post-outer-wrap {
+  width: 90%;
+  margin-bottom: 2em;
+  margin-left: auto;
+  margin-right: auto;
   border: black solid 1px;
 }
 
-.comment-wrapper {
-  margin: 5px auto;
+.post-inner-wrap {
+  border: 1px #01579B solid;
+  text-align: right;
+  font-weight: bold;
+  border-radius: 10px;
+  background-color: #E1F5FE;
+  color:#01579B;
+  padding:0.5em;
+  width: 40%;
+  height: 7em;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+#postMessage{
+  text-align: left;
+  border: 1px #01579B solid;
+  color:black;
+  font-style: normal;
+  border-width: 0 0 1px 0;
+  padding-left: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.comment-link {
+  text-align: center;
+  display:block;
+}
+
+.outer-comment-wrapper {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: space-around;
+}
+
+.new-comment-box {
+  display: none;
+}
+
+.inner-comment-wrapper {
   border: blue solid 1px;
+  height: 12em;
+  width: 12em;
+  margin: 2em;
 }
 
 .flash-comment-deleted {
