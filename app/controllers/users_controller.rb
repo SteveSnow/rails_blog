@@ -35,11 +35,21 @@ class UsersController < ApplicationController
 	end
 
 	def get_user
-		return User.find_by_id(params[:id])
+		return User.find_by_id(session[:user_id])
 	end
 
 	def check_session
 		return session[:id]==params[:id]
+	end
+
+	def add_post
+		@user=get_user
+		if !params[:message].nil?
+			# binding.pry
+			@user.posts.create(message: params[:message])
+		end
+
+		redirect_to user_path session[:user_id]
 	end
 
 	private

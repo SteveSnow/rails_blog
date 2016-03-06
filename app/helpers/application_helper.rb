@@ -4,8 +4,11 @@ module ApplicationHelper
 	end
 
   def find_user_name (user_id)
-    first_name = User.find(user_id).first_name
-    last_name = User.find(user_id).last_name
+    first_name = User.find_by_id(user_id).first_name
+    last_name = User.find_by_id(user_id).last_name
+    if !first_name.nil? && !last_name.nil?
     return first_name + " " + last_name
+    end
+    
   end
 end

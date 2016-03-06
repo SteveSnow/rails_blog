@@ -1,16 +1,9 @@
-<%= form_for(:session, url: login_path) do |f| %>
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.submit "Log in", class: "btn btn-primary" %>
-      <% end %>
 
 <h1>Rails Blog</h1>
+
 <h2><%= greeting %></h2>
+
 <% if current_user %>
   <% @posts.reverse.each do |post| %>
     <div class="post-wrapper">
@@ -18,7 +11,6 @@
       <%= find_user_name(post.user_id) %>
       <%= "posted this " + distance_of_time_in_words(post.created_at, Time.now) + " ago." %><br>
       <% if current_user %>
-<!--         <a href="#" class="comment-link">Make Comment</a> -->
         <div class="new-comment-box">
           <div class="comment-wrapper">
             <%= form_for Comment.new do |f| %>
@@ -28,7 +20,6 @@
               <%=f.text_field :message %><br>
               <%=f.submit :Comment %>
             <% end %>
-<!--             <button class='cancel-comment-button'>Cancel</button> -->
           </div>
         </div>
       <% end %>

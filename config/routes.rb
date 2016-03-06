@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   get '/' => 'home#index'
 
+  post '/newpost' => 'users#add_post'
+
+
   post   '/login'   => 'sessions#create'
   delete '/logout'  => 'sessions#destroy'
 
