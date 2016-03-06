@@ -1,47 +1,54 @@
 
-
-<h1>Rails Blog</h1>
-
-<h2><%= greeting %></h2>
-
-<% if current_user %>
-  <% @posts.reverse.each do |post| %>
-    <div class="post-wrapper">
-      <%= post.message %><br>
-      <%= find_user_name(post.user_id) %>
-      <%= "posted this " + distance_of_time_in_words(post.created_at, Time.now) + " ago." %><br>
-      <% if current_user %>
-        <a href="#" class="comment-link">Make Comment</a>
-        <div class="new-comment-box">
-          <div class="comment-wrapper">
-            <%= form_for Comment.new do |f| %>
-              <%=f.hidden_field :user_id, :value => current_user.id %><br>
-              <%=f.hidden_field :post_id, :value => post.id %><br>
-              <%=f.label :Comment %>
-              <%=f.text_field :message %><br>
-              <%=f.submit :Comment %>
-            <% end %>
-            <button class="cancel-comment-button">Cancel</button>
+<header>
+  <h1>Rails Blog</h1>
+  <h2><%= greeting %></h2>
+</header>
+<div class="home-body-wrapper">
+  <% if current_user %>
+    <% @posts.reverse.each do |post| %>
+      <div class="post-outer-wrap">
+        <div class="post-inner-wrap">
+          <div id="postMessage">
+            <%= post.message %><br>
           </div>
+          <%= find_user_name(post.user_id) %>
+          <%= "posted this " + distance_of_time_in_words(post.created_at, Time.now) + " ago." %><br>
         </div>
-      <% end %>
-      <% post.comments.reverse.each do |comment| %>
-        <div class="comment-wrapper">
-          <%= comment.message %><br>
-          <%= find_user_name(comment.user_id) %>
-          <%= "commented on this post " + distance_of_time_in_words(comment.created_at, Time.now) + " ago." %>
-          <% if current_user %>
-            <% if current_user.id == comment.user_id %>
-              <%= link_to("Delete Comment", comment_path(comment.id), method: :delete) %>
-            <% end %>
+        <% if current_user %>
+        <a href="#" class="comment-link">Make Comment</a>
+        <div class="outer-comment-wrapper">
+          <div class="new-comment-box">
+            <div class="inner-comment-wrapper">
+              <%= form_for Comment.new do |f| %>
+                <%=f.hidden_field :user_id, :value => current_user.id %><br>
+                <%=f.hidden_field :post_id, :value => post.id %><br>
+                <%=f.label :Comment %>
+                <%=f.text_field :message %><br>
+                <%=f.submit :Comment %>
+              <% end %>
+              <button class="cancel-comment-button">Cancel</button>
+            </div>
+          </div>
+          <% end %>
+          <% post.comments.reverse.each do |comment| %>
+            <div class="inner-comment-wrapper">
+              <%= comment.message %><br>
+              <%= find_user_name(comment.user_id) %><br>
+              <%= distance_of_time_in_words(comment.created_at, Time.now) + " ago" %><br>
+              <% if current_user %>
+                <% if current_user.id == comment.user_id %>
+                  <%= link_to("Delete Comment", comment_path(comment.id), method: :delete) %>
+                <% end %>
+              <% end %>
+            </div>
           <% end %>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
+    <%= flash[:alert] if flash[:alert] %>
+    <%= flash[:limit] if flash[:limit] %>
+  <% else %>
+    <h3>Log in or sign up to follow people and see their posts</h3>
   <% end %>
-  <%= flash[:alert] if flash[:alert] %>
-  <%= flash[:limit] if flash[:limit] %>
-<% else %>
-  <h3>Log in or sign up to follow people and see their posts</h3>
-<% end %>
+</div>
 
