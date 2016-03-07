@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   end
 
   def add_post
-    @user=get_user
+    @user=User.find_by_id(session[:user_id])
     if !params[:message].nil?
       if params[:message] !=''
         @user.posts.create(message: params[:message]) 

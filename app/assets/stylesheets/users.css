@@ -15,7 +15,7 @@ body {
 
 
 .profilelabel {
-	color:red;
+	color:#01579B;
 }
 
 #banner a{
@@ -41,6 +41,7 @@ body {
 	border: 1px black solid;
 	margin:1em;
 	width: 30%;
+	background-color: #E1F5FE;
 }
 
 #userPosts{
