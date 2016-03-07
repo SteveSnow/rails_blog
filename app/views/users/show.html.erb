@@ -1,4 +1,7 @@
-<%= link_to 'Find users to follow',:controller=> 'users', :action=> 'find' %>
+<% if  current_user.id != @user.id %>
+<%= link_to 'My Profile', user_path(current_user.id) %>
+<% end %><br>
+<%= link_to 'Find users to follow',:controller=> 'users', :action=> 'find' %><br>
 <div id="userContainer">
 	<div id="userInfo">
 		<table id="profileTable">
@@ -32,12 +35,14 @@
 			</tr>
 			<% end %>
 		</table>
+		<% if  current_user.id == @user.id %>
 		<div id="newPostContainer">
 			<%= form_tag("/newpost", method: "post") do %>
 			<%=text_area_tag(:message,'', :class=>'newPostText') %>
 			<%= submit_tag("Add") %>
 			<% end %>
 		</div>
+		<% end %>
 		<div id="userFollowsContainer">
 	<table>
 		<% @users.each do |u|%>
@@ -48,7 +53,9 @@
 				<%= link_to u.full_name, user_path(u.id) %>
 			</td>
 			<td>
+			<% if  current_user.id == @user.id %>
 				<%= link_to 'Unfollow',  :controller => "users", :action => "unfollow",:id=>u.id,:class => 'unfollowBtn' %>
+				<% end %>
 			</td>
 		</tr>
 		<% end %>
@@ -64,8 +71,10 @@
 			<div id="postMessage">
 				<%= post.message %>
 			</div>
+			<% if  current_user.id == @user.id %>
 			<%= link_to 'Delete Post',:controller=> 'users', :action=> 'delete_post', :post=>post.id  %>
 			<br>
+			<% end %>
 			<span><%= distance_of_time_in_words(Time.now,post.created_at) %></span>
 		</div>
 		<br>
