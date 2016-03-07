@@ -1,4 +1,4 @@
-$(document).on('page:load', function(){
+$(document).ready(function() {
 
   $('.comment-link').click(function(e){
     e.preventDefault();
@@ -13,4 +13,16 @@ $(document).on('page:load', function(){
     $('.comment-link').show();
   });
 
+ $('.inner-comment-wrapper').map(function(){
+    commentBoxHeight = $(this).height();
+    messageHeight = $(this).children('.comment-message').height();
+    infoHeight = $(this).children('.comment-info').height();
+    margin_offset = commentBoxHeight - messageHeight - infoHeight - 10 ;
+    $(this).children('.comment-info').css('margin-top', margin_offset);
+  });
+
 });
+
+function commentInfoMargin(){
+
+};
