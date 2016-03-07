@@ -1,5 +1,8 @@
+body {
+	margin: 0 0;
+}
+
 #banner{
-	height: 6em;
 	background-color: #607D8B;
 	margin-bottom:1em;
 }
@@ -16,8 +19,17 @@
 }
 
 #banner a{
-	color: red;
+	color: white;
+	padding: .25em;
+	font-size: 1.5em;
+	text-decoration: none;
 }
+
+#banner a:hover{
+	color: #607D8B;
+	background-color: white;
+}
+
 #userContainer{
 	display: flex;
 	justify-content: space-around;
