@@ -27,7 +27,7 @@
 		</table>
 		<div id="newPostContainer">
 			<%= form_tag("/newpost", method: "post") do %>
-			<%=text_area_tag(:message) %>
+			<%=text_area_tag(:message,'', :class=>'newPostText') %>
 			<%= submit_tag("Add") %>
 			<% end %>
 		</div>
