@@ -12,7 +12,6 @@
 <%= link_to("Logout", "/logout" , method: :delete) %>
 <%= link_to("Home", '/') %>
 <%= link_to("Profile", @user) %>
-
 <% else %>
 <%= form_for(:session, url: login_path) do |f| %>
 
