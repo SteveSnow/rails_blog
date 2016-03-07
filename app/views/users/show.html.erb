@@ -33,6 +33,16 @@
 					<%= link_to 'Edit', edit_user_path %>
 				</td>
 			</tr>
+			<% else %>
+			<tr>
+				<td >
+					<% if User.find(session[:user_id]).user_follows.where(follows_id:params[:id]).count!=0 %>
+					<%= link_to 'Unfollow',  {:controller => "users", :action => "unfollow",:id=>params[:id]},:class => 'unfollowBtn' %>
+					<% else %>
+					<%= link_to 'Follow',  {:controller => "users", :action => "follow",:id=>params[:id]},:class => 'followBtn' %>
+					<% end %>
+				</td>
+			</tr>
 			<% end %>
 		</table>
 		<% if  current_user.id == @user.id %>
@@ -44,25 +54,25 @@
 		</div>
 		<% end %>
 		<div id="userFollowsContainer">
-	<table>
-		<% @users.each do |u|%>
-		<% if  u.id != session[:user_id] %>
-		<% if @user.user_follows.where(follows_id:u.id).count!=0 %>
-		<tr>
-			<td>
-				<%= link_to u.full_name, user_path(u.id) %>
-			</td>
-			<td>
-			<% if  current_user.id == @user.id %>
-				<%= link_to 'Unfollow',  :controller => "users", :action => "unfollow",:id=>u.id,:class => 'unfollowBtn' %>
+			<table>
+				<% @users.each do |u|%>
+				<% if  u.id != session[:user_id] %>
+				<% if @user.user_follows.where(follows_id:u.id).count!=0 %>
+				<tr>
+					<td>
+						<%= link_to u.full_name, user_path(u.id) %>
+					</td>
+					<td>
+						<% if  current_user.id == @user.id %>
+						<%= link_to 'Unfollow',  {:controller => "users", :action => "unfollow",:id=>u.id},:class => 'unfollowBtn' %>
+						<% end %>
+					</td>
+				</tr>
 				<% end %>
-			</td>
-		</tr>
-		<% end %>
-		<% end %>
-		<% end %>
-	</table>
-</div>
+				<% end %>
+				<% end %>
+			</table>
+		</div>
 	</div>
 	<div id="userPosts">
 		<% if session[:user_id] %>
@@ -81,5 +91,4 @@
 		<% end %>
 		<% end %>
 	</div>
-
 </div>
