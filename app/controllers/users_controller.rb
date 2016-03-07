@@ -16,13 +16,15 @@ class UsersController < ApplicationController
 
   def show
     @user=get_user
+	   
     @posts=[]
     @users=User.all
 
     @user.user_follows.each do |d|
-      User.find(d.follows_id).posts.each do |u|
+      User.find_by_id(d.follows_id).posts.each do |u|
         @posts.push(u)
       end
+
     end
   end
 
@@ -45,8 +47,9 @@ class UsersController < ApplicationController
   def add_post
     @user=get_user
     if !params[:message].nil?
-      # binding.pry
-      @user.posts.create(message: params[:message])
+      if params[:message] !=''
+        @user.posts.create(message: params[:message]) 
+      end
     end
 
     redirect_to user_path session[:user_id]
@@ -55,13 +58,13 @@ class UsersController < ApplicationController
   def follow
     user=get_user
     user.follow_user(params[:id])
-    redirect_to user_path session[:user_id]
+    redirect_to(:back)
   end
 
   def unfollow
     user=get_user
     user.unfollow_user(params[:id])
-    redirect_to user_path session[:user_id]
+    redirect_to(:back)
   end
 
   def delete_post
@@ -70,6 +73,11 @@ class UsersController < ApplicationController
       user.posts.delete(params[:post])
     end
     redirect_to user_path session[:user_id]
+  end
+
+  def find
+    @user=get_user
+    @users=User.all
   end
 
   private

@@ -3,14 +3,26 @@
 	background-color: #607D8B;
 	margin-bottom:1em;
 }
+#userFollowsContainer {
+	clear: both;
+}
+#profileTable{
+	padding: 1em;
+}
+
+
+.profilelabel {
+	color:red;
+}
 
 #banner a{
 	color: red;
 }
 #userContainer{
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	border: 1px black solid;
+	margin-top: 1em;
 }
 
 #userInfo{
@@ -47,8 +59,35 @@
 	padding-bottom: 0.5em;
 }
 
+.newPostText{
+	height: 20em;
+	padding: 0;
+	margin:auto;
+	width: 100%;
+	resize: none;
+}
+
 #newPostContainer{
 	border: 1px black solid;
 	height: 20em;
+	display: flex;
+}
+
+#newPostContainer form{
+	margin: auto;
+	width: 90%;
+	font-size: 20px;
+}
+
+#newPostContainer input {
+	width: 100%;
+	margin: auto;
+	font-size: 24px;
+}
+#newPostContainer input:hover {
+	background-color: #01579B;
+	color: white;
+	border-radius: 10px;
+	font-size: 14px;
 }
 
