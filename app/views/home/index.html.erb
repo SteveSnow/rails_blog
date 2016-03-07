@@ -3,6 +3,10 @@
   <h1>Rails Blog</h1>
   <h2><%= greeting %></h2>
 </header>
+<div class="home-alert">
+  <%= flash[:alert] if flash[:alert] %>
+  <%= flash[:limit] if flash[:limit] %>
+</div>
 <div class="home-body-wrapper">
   <% if current_user %>
     <% @posts.reverse.each do |post| %>
@@ -23,7 +27,7 @@
                 <%=f.hidden_field :user_id, :value => current_user.id %><br>
                 <%=f.hidden_field :post_id, :value => post.id %><br>
                 <%=f.label :Comment %>
-                <%=f.text_field :message %><br>
+                <%=f.text_area :message, :class => "message-field" %><br>
                 <%=f.submit :Comment %>
               <% end %>
               <button class="cancel-comment-button">Cancel</button>
@@ -49,8 +53,6 @@
         </div>
       </div>
     <% end %>
-    <%= flash[:alert] if flash[:alert] %>
-    <%= flash[:limit] if flash[:limit] %>
   <% else %>
     <h3>Log in or sign up to follow people and see their posts</h3>
   <% end %>

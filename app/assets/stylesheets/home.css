@@ -2,6 +2,13 @@ header {
   text-align: center;
 }
 
+.home-alert {
+  color: #f80000;
+  font-weight: bold;
+  font-variant: small-caps;
+  font-size: 2em;
+}
+
 .home-body-wrapper {
   width: 90%;
   height: 100%;
@@ -19,6 +26,7 @@ header {
   padding: 0.5em;
   background-color: #D0D0D0;
   border-radius: 3em;
+  text-align: center;
 
 }
 
@@ -50,7 +58,18 @@ header {
 
 .comment-link {
   text-align: center;
-  display:block;
+  display:inline-block;
+  width: 6em;
+  text-decoration: none;
+  color:white;
+  background-color: #607D8B;
+  border-radius: 8px;
+  border: white 2px solid;
+}
+
+.comment-link:hover{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+
 }
 
 .outer-comment-wrapper {
@@ -64,6 +83,10 @@ header {
 
 .new-comment-box {
   display: none;
+}
+
+.message-field {
+  height: 4em;
 }
 
 .inner-comment-wrapper {
@@ -95,6 +118,8 @@ header {
   text-decoration: none;
   background-color: white;
   border-radius: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #delete-button:hover {
