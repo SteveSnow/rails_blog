@@ -49,6 +49,31 @@
 	 color:#01579B;
 }
 
+.unfollowBtn{
+	border: 1px #01579B solid;
+	text-decoration: none;
+	margin:1em;
+	color:white;
+	background-color: #01579B ;
+}
+
+.unfollowBtn:hover{
+	color:black;
+	background-color: white;
+}
+
+.followBtn{
+	margin:1em;
+	border: 1px #01579B solid;
+	text-decoration: none;
+	color:black;
+	background-color: white;
+}
+
+.followBtn:hover{
+	color:white;
+	background-color: #01579B ;
+}
 #postMessage{
 	text-align: left;
 	border: 1px #01579B solid;

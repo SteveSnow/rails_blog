@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   end
 
   def get_user
-    return User.find_by_id(session[:user_id])
+    return User.find_by_id(params[:id])
   end
 
   def check_session
