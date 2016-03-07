@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   has_many :posts
 
-  before_save :to_lowercase
+  
+  TYPE=['admin','regular','super']
 
 def full_name
   if !self.first_name.nil? && self.last_name.nil?
@@ -25,8 +26,5 @@ end
     return @follows=Relationship.where(follower_id:self.id)
   end
 
-  def to_lowercase
-    self.email=self.email.downcase!
-  end
 
 end
