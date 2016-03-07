@@ -40,7 +40,7 @@
                 <%= distance_of_time_in_words(comment.created_at, Time.now) + " ago" %><br>
                 <% if current_user %>
                   <% if current_user.id == comment.user_id %>
-                    <%= link_to("Delete Comment", comment_path(comment.id), method: :delete) %>
+                    <%= link_to("Delete Comment", comment_path(comment.id), :id => "delete-button", method: :delete) %>
                   <% end %>
                 <% end %>
               </div>
