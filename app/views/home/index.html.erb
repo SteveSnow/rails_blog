@@ -32,14 +32,18 @@
           <% end %>
           <% post.comments.reverse.each do |comment| %>
             <div class="inner-comment-wrapper">
-              <%= comment.message %><br>
-              <%= find_user_name(comment.user_id) %><br>
-              <%= distance_of_time_in_words(comment.created_at, Time.now) + " ago" %><br>
-              <% if current_user %>
-                <% if current_user.id == comment.user_id %>
-                  <%= link_to("Delete Comment", comment_path(comment.id), method: :delete) %>
+              <div class="comment-message">
+                <%= comment.message %>
+              </div>
+              <div class="comment-info">
+                <%= find_user_name(comment.user_id) %><br>
+                <%= distance_of_time_in_words(comment.created_at, Time.now) + " ago" %><br>
+                <% if current_user %>
+                  <% if current_user.id == comment.user_id %>
+                    <%= link_to("Delete Comment", comment_path(comment.id), method: :delete) %>
+                  <% end %>
                 <% end %>
-              <% end %>
+              </div>
             </div>
           <% end %>
         </div>

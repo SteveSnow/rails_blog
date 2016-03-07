@@ -66,10 +66,20 @@ header {
   height: 12em;
   width: 12em;
   margin: 2em;
+  padding:0.5em;
+  border-radius: 10px;
+  background-color: #cccccc;
+}
+.comment-message {
+  text-align: left;
+  border: 1px #01579B solid;
+  color:black;
+  font-style: normal;
+  border-width: 0 0 1px 0;
+  padding-left: 0.5em;
+  padding-bottom: 0.5em;
 }
 
-.flash-comment-deleted {
-  font-size: 2em;
-  color: red;
-  font-weight: bold;
+.comment-info {
+  text-align: right;
 }
