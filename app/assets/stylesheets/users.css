@@ -3,7 +3,9 @@
 	background-color: #607D8B;
 	margin-bottom:1em;
 }
-
+#userFollowsContainer {
+	clear: both;
+}
 #profileTable{
 	padding: 1em;
 }
@@ -34,6 +36,7 @@
 	padding:1em;
 	width: 50%;
 	background-color: #607D8B;
+	clear: right;
 }
 
 #postContainer{

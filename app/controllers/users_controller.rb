@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def show
     @user=get_user
-  
+	   
     @posts=[]
     @users=User.all
 

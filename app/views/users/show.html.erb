@@ -19,9 +19,9 @@
 					<%= label_tag :last_name, 'Last Name', :class => 'profilelabel' %>
 				</td>
 				<td>
-						<% if ! current_user.last_name.nil? %>
-		<%=  current_user.last_name.capitalize %>
-		<% end %>
+					<% if ! current_user.last_name.nil? %>
+					<%=  current_user.last_name.capitalize %>
+					<% end %>
 				</td>
 			</tr>
 		</table>
@@ -31,8 +31,25 @@
 			<%= submit_tag("Add") %>
 			<% end %>
 		</div>
+		<div id="userFollowsContainer">
+	<table>
+		<% @users.each do |u|%>
+		<% if  u.id != session[:user_id] %>
+		<% if @user.user_follows.where(follows_id:u.id).count!=0 %>
+		<tr>
+			<td>
+				<%= u.full_name %>
+			</td>
+			<td>
+				<%= link_to 'Unfollow', :controller => "users", :action => "unfollow",:id=>u.id %>
+			</td>
+		</tr>
+		<% end %>
+		<% end %>
+		<% end %>
+	</table>
+</div>
 	</div>
-
 	<div id="userPosts">
 		<% if session[:user_id] %>
 		<% @user.posts.reverse_each do |post| %>
@@ -48,4 +65,5 @@
 		<% end %>
 		<% end %>
 	</div>
+
 </div>
