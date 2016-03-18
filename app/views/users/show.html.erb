@@ -47,7 +47,7 @@
 		</table>
 		<% if  current_user.id == @user.id %>
 		<div id="newPostContainer">
-			<%= form_tag("/newpost", method: "post") do %>
+			<%= form_tag("/newpost", method: "post", :multipart => true) do %>
 			<%=text_area_tag(:message,'', :class=>'newPostText') %>
 			<%= submit_tag("Add") %>
 			<% end %>
