@@ -1,0 +1,136 @@
+@import 'colors';
+@mixin follow-styles {
+  border: 1px $dark-blue solid;
+  text-decoration: none;
+ }
+ @mixin dark-blue-border{
+     border: 1px $dark-blue solid;
+ }
+ @mixin black-border{
+     border: 1px black solid;
+ }
+
+#banner {
+  background-color: $teal;
+  margin-bottom: 1em;
+  a {
+    color: white;
+    padding: 0.25em;
+    font-size: 1.5em;
+    text-decoration: none;
+    &:hover {
+      color: $teal;
+      background-color: white;
+    }
+  }
+}
+#newPostContainer {
+  @include black-border;
+  border-width: 1px 0 1px 0;
+  height: 20em;
+  display: flex;
+  form {
+    margin: auto;
+    width: 90%;
+    font-size: 20px;
+  }
+  input {
+    width: 100%;
+    margin: auto;
+    font-size: 24px;
+    &:hover {
+      background-color: $dark-blue;
+      color: white;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+  }
+}
+
+.followBtn {
+  @include follow-styles;
+  color: black;
+  background-color: white;
+  width: 40em;
+  &:hover {
+    color: white;
+    background-color: $dark-blue;
+  }
+}
+
+.unfollowBtn{
+	@include follow-styles;
+  background-color: $dark-blue;
+	color:white;
+  &:hover{
+    color:black;
+    background-color: white;
+  }
+}
+
+#postContainer{
+  @include dark-blue-border;
+	text-align: right;
+	font-style: bold;
+	padding:0.5em;
+	 border-radius: 10px;
+	 background-color: #E1F5FE;
+	 color:#01579B;
+}
+#postMessage{
+	text-align: left;
+	@include dark-blue-border;
+	color:black;
+	font-style: normal;
+	border-width: 0 0 1px 0;
+	padding-left: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+.profilelabel {
+	color:$dark-blue;
+}
+
+.flex-container{
+  display: flex;
+  justify-content: space-around;
+}
+
+#userContainer{
+  @extend .flex-container;
+	@include black-border;
+	margin-top: 1em;
+}
+
+#userInfo{
+	@include black-border;
+	margin:1em;
+	width: 30%;
+	background-color: #E1F5FE;
+}
+
+#userPosts{
+@include black-border;
+	margin:1em;
+	padding:1em;
+	width: 50%;
+	background-color: $teal;
+}
+
+.newPostText{
+	height: 20em;
+	padding: 0;
+	margin:auto;
+	width: 100%;
+	resize: none;
+}
+body {
+	margin: 0 0;
+}
+
+#userFollowsContainer {
+	clear: both;
+}
+#profileTable{
+	padding: 1em;
+}
